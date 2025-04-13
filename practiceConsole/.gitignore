@@ -1,1 +1,35 @@
-.idea
+# Ignore build artifacts
+bin/
+obj/
+
+# Rider
+.idea/
+
+# VSCode
+.vscode/
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragejson
+*.log
+
+# NuGet
+*.nupkg
+.nuget/
+
+# Misc
+*.tmp
+*.temp
+
+# SourceLink
+*.sourcelink.json
+
+# xUnit, Testhost, and related test binaries
+testhost.dll
+testhost.exe
+xunit.*.dll
+Microsoft.TestPlatform.*.dll
+Microsoft.VisualStudio.*.dll
+Newtonsoft.Json.dll

@@ -1,0 +1,64 @@
+// List<Book> books = new()
+// {
+//     new("The Good Earth", "Pearl S. Buck", 1931, true, null)
+// };
+
+// enum Command
+// {
+//     addbook,
+//     markbookread,
+//     viewallbooks,
+//     viewunreadbooks,
+//     filterbygenre,
+//     exit
+// }
+
+
+// public partial class Program
+// {
+//     static async Task Main(string[] args){
+
+//             var actions = new Dictionary<Command, Action> {
+//                 {Command.addbook, AddBook},
+//                 {Command.markbookread, MarkBookRead},
+//                 {Command.viewallbooks, ViewAllBooks},
+//                 {Command.viewunreadbooks, ViewUnreadBooks},
+//                 {Command.filterbygenre, FilterByGenre}
+//             };
+//         while (true)
+//         {
+
+//             Console.WriteLine("What is your command? Type 'list' to list commands");
+//             string input = Console.ReadLine()?.Trim().ToLower() ?? "";
+//             if(input == "exit"){
+
+//                 break;
+//             } else if(Enum.TryParse<Command>(input, ignoreCase: true, out Command command) 
+//                 && actions.ContainsKey(command))
+//             {
+//                 actions[command]();
+//             }
+//             else
+//             {
+//                 Console.WriteLine("Invalid command. Try again.");
+//             }
+//             // If the command is not in the dictionary, write command not found and do another prompt.
+//             // If the command is in the dictionary, call the command function.
+//             // If the command is exit, break.
+
+//             System.Threading.Thread.Sleep(600);
+//         }
+
+//         Console.WriteLine("Cheers.");
+//     }
+
+//     private static void AddBook()
+//     {
+//         Book book = new Book()
+//         // Ask questions about the book to add it.
+//         Console.WriteLine("What is the title?");
+//         string title = Console.ReadLine()?.Trim() ?? "";
+//         // Confirm it's added.
+//         throw new NotImplementedException();
+//     }
+// }

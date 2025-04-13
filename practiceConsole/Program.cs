@@ -1,77 +1,30 @@
-﻿using static practiceConsole.StringExercises;
+﻿using System;
+using System.Net;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using practiceConsole;
+using System.Net.Http;
+using System.Text.Json;
+using practiceConsole.InFlightMovie;
 
-var result = CharactersSurroundedByPluses("a++b+c++d+e+f++g");
-foreach (var (key, value) in result)
+
+namespace practiceConsole;
+
+class Program
 {
-    Console.WriteLine($"{key} : {value}");
+    static void Main(string[] args){
+        Console.WriteLine("The app ran.");
+        IFlightLengthProvider flightLengthProvider = new MockFlightLengthProvider(120);
+        IMovieLengthProvider movieLengthProvider = new MockMovieLengthProvider([10, 20, 30, 90, 160]);
+        MovieSequenceFinder movieSequenceFinder = new MovieSequenceFinder(movieLengthProvider, flightLengthProvider);
+        var sequenceReturn = movieSequenceFinder.FindMovieSequence();
+
+        Console.WriteLine(
+            $"Sequence found: {sequenceReturn.found}, " + 
+            $"Sequence: {string.Join(", ", sequenceReturn.sequence)}"
+        );
+
+    }
 }
-
-
-// 1. Convert input to lowercase
-// 2. Remove all non-alphanumeric characters
-// 3. Reverse the cleaned string
-// 4. Compare cleaned string with reversed string
-// 5. Return true if they match, false otherwise
-
-
-// // Lambda
-// Func<string, bool> isPalindrome = input =>
-// {
-//     var cleaned = new string(input
-//         .Where(char.IsLetterOrDigit)
-//         .Select(char.ToLower)
-//         .ToArray());
-//
-//     var reversed = new string(cleaned.Reverse().ToArray());
-//
-//     return cleaned == reversed;
-// };
-
-// // No return type for action.
-// Action<string> greet = name => Console.WriteLine($"Hello, {name}!");
-
-// // Anonymous function
-// Func<string, bool> isPalindrome = delegate(string input)
-// {
-//     return true;
-// };
-
-// Func<string, bool> isPalindrome = input =>
-// {
-//     var cleaned = new string(input
-//         .Where(char.IsLetterOrDigit)
-//         .Select(char.ToLower)
-//         .ToArray());
-
-//     var reversed = new string(cleaned.Reverse().ToArray());
-
-//     return cleaned == reversed;
-// };
-
-// Console.WriteLine(isPalindrome("here come the hot steppa43s00"));
-// Console.WriteLine(isPalindrome("tac ocat"));
-
-// int x=3, y=7;
-// void Swap(ref int a, ref int b){
-//     int tempa = a;
-//     a = b;
-//     b = tempa;
-// }
-// Swap(ref x, ref y);
-// Console.WriteLine(x);
-// Console.WriteLine(y);
-
-
-
-// Action<Rectangle> printArea = delegate(Rectangle rect)
-// {
-//     Console.WriteLine($"Area: {rect.Width * rect.Height}" );
-// };
-// printArea(new Rectangle { Width = 10, Height = 20 });
-//
-// struct Rectangle
-// {
-//     public int Width;
-//     public int Height;
-// }
-
